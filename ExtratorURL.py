@@ -41,8 +41,8 @@ class ExtratorURL:
         return valor_parametro
 
 
-url = "https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100"
-#url = " "
+#url = "https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100"
+url = " "
 extrator = ExtratorURL(url)
 valor = extrator.get_valor_parametro("quantidade")
 print(valor)
