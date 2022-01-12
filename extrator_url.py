@@ -42,8 +42,12 @@ class Extrator_Url:
     def __str__(self):
         return self.url + "\n" + "Parâmetros: " + self.get_parametros_url() + "\n" + "URL Base: " + self.get_base_url()
 
+    def __eq__(self, other):
+       return self.url == other.url
+
 
 extrator_url = Extrator_Url("https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100")
+extrator_url2 = Extrator_Url("https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100")
 extrator_url.valida_url()
 
 nome_parametro = "quantidade"
@@ -58,5 +62,8 @@ print("Valor: {}".format(valor))
 
 print("O tamanho da nossa URL é: {} ".format(len(extrator_url)))
 '''
+
+#Verificar igualdade entre objetos
+print(extrator_url == extrator_url2)
 
 print(extrator_url)
