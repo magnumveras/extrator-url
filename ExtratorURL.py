@@ -1,4 +1,5 @@
-import re
+import re, decimal
+
 class ExtratorURL:
     def __init__(self, url):
         self.url = self.sanitiza_url(url)
@@ -50,9 +51,33 @@ class ExtratorURL:
 
         return valor_parametro
 
+    def __len__(self):
+        return len(self.url)
+
+    def __str__(self):
+        return self.url + "\n" + "Parâmetros: " + self.get_parametros_url() + "\n" + "URL Base: " + self.get_base_url()
+
+    def __eq__(self, other):
+       return self.url == other.url
+
+
 
 url = "https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100"
 #url = " "
 extrator = ExtratorURL(url)
-valor = extrator.get_valor_parametro("quantidade")
-print(valor)
+
+############DESAFIO#################
+quantidade = extrator.get_valor_parametro("quantidade")
+moedadestino = extrator.get_valor_parametro("moedaDestino")
+moedaOrigem = extrator.get_valor_parametro("moedaOrigem")
+
+VALOR_DOLAR = 5.50
+
+if(moedaOrigem == "dolar" and moedadestino == "real"):
+    valor = int(quantidade) * VALOR_DOLAR
+    print("O valor da conversão de = U$ {} para real é = R$ {}".format(quantidade, valor))
+elif(moedaOrigem == "real" and moedadestino == "dolar"):
+    valor = int(quantidade) / VALOR_DOLAR
+    print("O valor da conversão de = R$ {} para dolar é = U$ {}".format(quantidade, valor))
+else:
+    print("Câmbio de {} para {} não está disponível!".format(moedaOrigem, moedadestino))
