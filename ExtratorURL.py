@@ -75,9 +75,9 @@ VALOR_DOLAR = 5.50
 
 if(moedaOrigem == "dolar" and moedadestino == "real"):
     valor = int(quantidade) * VALOR_DOLAR
-    print("O valor da conversão de = U$ {} para real é = R$ {}".format(quantidade, valor))
+    print("O valor da conversão de = U$ {} para real é = R$ {}".format(quantidade, round(valor, 2)))
 elif(moedaOrigem == "real" and moedadestino == "dolar"):
     valor = int(quantidade) / VALOR_DOLAR
-    print("O valor da conversão de = R$ {} para dolar é = U$ {}".format(quantidade, valor))
+    print("O valor da conversão de = R$ {} para dolar é = U$ {}".format(quantidade, round(valor, 2)))
 else:
     print("Câmbio de {} para {} não está disponível!".format(moedaOrigem, moedadestino))
